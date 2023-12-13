@@ -1,0 +1,10 @@
+._gap-80 {
+    height: 80px;
+}
+
+.nav-link:hover {
+    background-color: #266ead;
+}
+.nav-link.active {
+    color: #266ead;
+}
