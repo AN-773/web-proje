@@ -16,6 +16,39 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+#region
+builder.Services.AddSingleton<LanguageService>();
+// Configure Localization
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+// Configure MVC with Localization and DataAnnotationsLocalization
+builder.Services.AddMvc()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization(options =>
+        options.DataAnnotationLocalizerProvider = (type, factory) =>
+        {
+            var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
+            return factory.Create(nameof(SharedResource), assemblyName.Name);
+        });
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+
+    var supportedCultures = new List<CultureInfo>
+    {
+        new CultureInfo("en-US"),
+        new CultureInfo("tr-TR"),
+
+    };
+    options.DefaultRequestCulture = new RequestCulture(culture: "tr-TR", uiCulture: "tr-TR");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+    options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
+});
+
+
+#endregion
+
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 builder.Services.AddDbContext<ApplicationContext>(
