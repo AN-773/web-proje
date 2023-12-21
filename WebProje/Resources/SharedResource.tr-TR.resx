@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Home" xml:space="preserve">
+        <value>Ev</value>
+    </data>
+    <data name="Slogan" xml:space="preserve">
+        <value>Dünyanın en iyi doktorlarını arıyorsanız
+Ve en ileri teknolojiler</value>
+    </data>
+    <data name="MakeAnAppointment" xml:space="preserve">
+        <value>Randevu al</value>
+    </data>
+    <data name="Filters" xml:space="preserve">
+        <value>Filtreler</value>
+    </data>
+    <data name="Clinic" xml:space="preserve">
+        <value>Klinik</value>
+    </data>
+    <data name="Clinics" xml:space="preserve">
+        <value>Klinikler</value>
+    </data>
+    <data name="DoctorList" xml:space="preserve">
+        <value>Doktor Listesi</value>
+    </data>
+    <data name="Email" xml:space="preserve">
+        <value>E-Posta</value>
+    </data>
+    <data name="Hospital" xml:space="preserve">
+        <value>Hastane</value>
+    </data>
+    <data name="Hosptals" xml:space="preserve">
+        <value>Hastaneler</value>
+    </data>
+    <data name="Login" xml:space="preserve">
+        <value>Giriş Yap</value>
+    </data>
+    <data name="Logout" xml:space="preserve">
+        <value>Çıkış Yap</value>
+    </data>
+    <data name="MyAppointments" xml:space="preserve">
+        <value>Randevularım</value>
+    </data>
+    <data name="Name" xml:space="preserve">
+        <value>Adı</value>
+    </data>
+    <data name="Password" xml:space="preserve">
+        <value>Şifre</value>
+    </data>
+    <data name="Register" xml:space="preserve">
+        <value>Yeni hesap aç</value>
+    </data>
+    <data name="Specialities" xml:space="preserve">
+        <value>Ana bilim dalılar</value>
+    </data>
+    <data name="Speciality" xml:space="preserve">
+        <value>Ana bilim dalı</value>
+    </data>
+    <data name="Welcome" xml:space="preserve">
+        <value>Hoş geldiniz</value>
+    </data>
+    <data name="PleaseEnterDate" xml:space="preserve">
+        <value>Lütfen tarihi girin</value>
+    </data>
+    <data name="Date - Time" xml:space="preserve">
+        <value>Tarih - Zaman</value>
+    </data>
+    <data name="Nose" xml:space="preserve">
+        <value>Burun</value>
+    </data>
+    <data name="Ear" xml:space="preserve">
+        <value>Kulak</value>
+    </data>
+    <data name="Throat" xml:space="preserve">
+        <value>Boğaz</value>
+    </data>
+    <data name="Heart Checkup" xml:space="preserve">
+        <value>Kalp muayenesi</value>
+    </data>
+    <data name="Open Heart Surgery" xml:space="preserve">
+        <value>Açık kalp ameliyatı</value>
+    </data>
+    <data name="SelectSpeciality" xml:space="preserve">
+        <value>Bölüm Seçiniz</value>
+    </data>
+    <data name="SelectClinic" xml:space="preserve">
+        <value>Klinik Seçiniz</value>
+    </data>
+    <data name="NoAvailableAppointments" xml:space="preserve">
+        <value>Mevcut randevu yok</value>
+    </data>
+    <data name="Language" xml:space="preserve">
+        <value>Language</value>
+    </data>
+    <data name="SelectHospital" xml:space="preserve">
+        <value>Hastane Seçiniz</value>
+    </data>
+    <data name="Alzheimer treatments" xml:space="preserve">
+        <value>Alzheimer tedavileri</value>
+    </data>
+    <data name="Brain tumor" xml:space="preserve">
+        <value>Beyin tümörü</value>
+    </data>
+    <data name="Eyes Checkup" xml:space="preserve">
+        <value>Göz Kontrolü</value>
+    </data>
+    <data name="Eyes surgery" xml:space="preserve">
+        <value>Göz ameliyatı</value>
+    </data>
+    <data name="appendix vermiformis" xml:space="preserve">
+        <value>Apandis</value>
+    </data>
+    <data name="Poison Analysis" xml:space="preserve">
+        <value>Zehir Analizi</value>
+    </data>
+    <data name="Laser Eye sight correction" xml:space="preserve">
+        <value>Lazer Göz görme düzeltmesi</value>
+    </data>
+    <data name="Nose Ear And Throat" xml:space="preserve">
+        <value>Kulak-Burun-Boğaz</value>
+    </data>
+    <data name="Heart" xml:space="preserve">
+        <value>Kalp</value>
+    </data>
+    <data name="Brain" xml:space="preserve">
+        <value>Beyin</value>
+    </data>
+    <data name="Eyes" xml:space="preserve">
+        <value>Göz</value>
+    </data>
+    <data name="internal medicine" xml:space="preserve">
+        <value>Dahiliye</value>
+    </data>
+    <data name="Dashboard" xml:space="preserve">
+        <value>Panel</value>
+    </data>
+    <data name="Remember me?" xml:space="preserve">
+        <value>Beni Hatırla?</value>
+    </data>
+    <data name="imgpath" xml:space="preserve">
+        <value>/imgs/SAGLIK_HIZMETI.svg</value>
+    </data>
+</root>
