@@ -49,6 +49,9 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 
 #endregion
 
+builder.Services.AddSession();
+
+
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 builder.Services.AddDbContext<ApplicationContext>(
@@ -59,6 +62,22 @@ builder.Services.AddDbContext<ApplicationContext>(
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors()
 );
+
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+    {
+        options.Password.RequiredLength = 1;
+        options.Password.RequireDigit = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireLowercase = false;
+        options.User.RequireUniqueEmail = true;
+        options.SignIn.RequireConfirmedAccount = false;
+    })
+    .AddDefaultTokenProviders()
+    .AddDefaultUI()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationContext>();
+// builder.Services.AddTransient<DBInit>();
 
 var app = builder.Build();
 
@@ -71,12 +90,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
