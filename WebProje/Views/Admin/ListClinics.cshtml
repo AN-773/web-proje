@@ -1,0 +1,47 @@
+@{
+    List<Clinic> clinics = (List<Clinic>)ViewBag.clinics;
+}
+<div class="block full">
+    <div class="block-title">
+        <h2>Data</h2>
+    </div>
+    <div class="table-responsive">
+        <div id="example-datatable_wrapper" class="Data_wrapper form-inline no-footer">
+            <table id="example-datatable" class="table table-striped table-bordered table-vcenter dataTable no-footer" role="grid" aria-describedby="example-datatable_info">
+                <thead>
+                <tr role="row">
+                    <th class="text-center sorting_asc" style="width: 49px;" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending">ID</th>
+                    <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 191px;">Name</th>
+                    <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 191px;">Hospital</th>
+                    <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 191px;">Speciality</th>
+                    <th class="text-center sorting_disabled" style="width: 74px;" rowspan="1" colspan="1" aria-label="">
+                        <i class="fa fa-flash"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (Clinic clinic in clinics)
+                {
+                    <tr role="row" class="odd">
+                        <td class="text-center sorting_1">@clinic.Id</td>
+                        <td>
+                            <strong>@clinic.Name</strong>
+                        </td>
+                          <td>
+                            <strong>@(System.String.Join(',', clinic.Hospitals.Select(h =>' ' + h.Name)))</strong>
+                        </td>
+                          <td>
+                            <strong>@clinic.Speciality.Name</strong>
+                        </td>
+                        <td class="text-center">
+                            <a href="/Admin/DeleteClinic/@clinic.Id" data-toggle="tooltip" title="" class="btn btn-effect-ripple btn-xs btn-danger" style="overflow: hidden; position: relative;" data-original-title="Delete User">
+                                X
+                            </a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
