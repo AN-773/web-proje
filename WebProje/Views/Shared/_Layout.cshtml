@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@{
+    var role = "";
+    if (User.Identity?.IsAuthenticated ?? false)
+    {
+        role = User.FindAll(ClaimTypes.Role).Select(c => c.Value).First();
+    }
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -6,9 +14,9 @@
     <title>@ViewData["Title"] - WebProje</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/WebProje.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/utils.css" asp-append-version="true"/>
 </head>
-<body>
+<body style="overflow-x: hidden">
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -20,25 +28,66 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@__.GetKey("Home")</a>
                     </li>
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MyAppointments">@__.GetKey("MyAppointments")</a>
+                        </li>
+                    }
+                    @if (role == "Admin")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">@__.GetKey("Dashboard")</a>
+                        </li>
+                    }
+                    else if(role == "Doctor")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Doctors" asp-action="Index">@__.GetKey("Dashboard")</a>
+                        </li>
+                    }
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @__.GetKey("Language")
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="/Home/ChangeLanguage?lang=en-US">English</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/Home/ChangeLanguage?lang=tr-TR">Türkçe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li style="flex: 1"></li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
+                                <button type="submit" class="nav-link btn btn-link text-black">@__.GetKey("Logout")</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@__.GetKey("Login")</a>
+                            </li>
+                        }
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
+<main role="main" class="pb-3">
+    @RenderBody()
+</main>
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2023 - WebProje - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        2023 - WebProje - B201210562 G201210568
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

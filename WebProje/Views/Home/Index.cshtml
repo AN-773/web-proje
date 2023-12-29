@@ -2,7 +2,91 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="hero text-white">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col col-12">
+                <div class="card heroMainCard">
+                    <div class="row justify-content-center align-content-between">
+                        <div class="col-12 p-5">
+                            <img class="w-100" src="@__.GetKey("imgpath")">
+                        </div>
+                    </div>
+                    <div class="row d-none d-lg-flex _gap-80"></div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 p-4 p-lg-5 d-flex justify-content-lg-start">
+                            <div>
+                                @__.GetKey("Slogan")
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 p-4 p-lg-5 d-flex justify-content-lg-end">
+                            <div class="d-flex align-items-end">
+                                <a href="#docs" class="btn btn-primary rounded-pill">
+                                    @__.GetKey("MakeAnAppointment")
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="heroMainCardDoctorImgContainer d-none d-lg-block">
+                        <img class="heroMainCardDoctorImg" src="~/imgs/doctor_portrait.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* <div class="row g-4"> *@
+        @*     <div class="col-6 col-lg-3"> *@
+        @*         <div class="card doctorsCard" style="height: 80px; "> *@
+        @*             <img class="doctorsCardImg" src="imgs/doctor.svg"/> *@
+        @*         </div> *@
+        @*     </div> *@
+        @*     <div class="col-6 col-lg-3"> *@
+        @*         <div class="card" style="height: 80px; background-color: #A3DAC2"></div> *@
+        @*     </div> *@
+        @*     <div class="col-6 col-lg-3"> *@
+        @*         <div class="card" style="height: 80px; background-color: #E7C2D4"></div> *@
+        @*     </div> *@
+        @*     <div class="col-6 col-lg-3"> *@
+        @*         <div class="card" style="height: 80px; background-color: #92BDF6"></div> *@
+        @*     </div> *@
+        @* </div> *@
+    </div>
 </div>
+
+<div id="docs" class="row mt-5 p-3">
+    <!-- Filters -->
+    <div class="col-md-3">
+        <h5>@__.GetKey("Filters")</h5>
+        <form>
+            <div class="form-group">
+                <label for="hospitalsFilter">@__.GetKey("Hospital"):</label>
+                <select class="form-control" id="hospitalsFilter">
+                  
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="specialitiesFilter">@__.GetKey("Speciality"):</label>
+                <select class="form-control" id="specialitiesFilter">
+                 
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="clinicsFilter">@__.GetKey("Clinic"):</label>
+                <select class="form-control" id="clinicsFilter">
+                  
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <!-- Doctor List -->
+    <div class="col-md-9">
+        <h5>@__.GetKey("DoctorList")</h5>
+        <div class="row" id="doctorsList">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/filters.js"></script>
+    <script src="~/js/HomePage.js"></script>
+}

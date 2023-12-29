@@ -1,0 +1,38 @@
+@model List<Appointment>
+<div class="block full">
+    <div class="block-title">
+        <h2>Data</h2>
+    </div>
+    <div class="table-responsive">
+        <div id="example-datatable_wrapper" class="Data_wrapper form-inline no-footer">
+            <table id="example-datatable" class="table table-striped table-bordered table-vcenter dataTable no-footer" role="grid" aria-describedby="example-datatable_info">
+                <thead>
+                <tr role="row">
+                    <th class="text-center sorting_asc" style="width: 49px;" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending">No</th>
+                    <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 191px;">@__.GetKey("Hospital")</th>
+                    <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 191px;">@__.GetKey("Clinic")</th>
+                    <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 191px;">@__.GetKey("Date - Time")</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{ int i = 1; }
+                @foreach (Appointment appointment in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="text-center sorting_1">@(i++)</td>
+                        <td>
+                            <strong>@appointment.HospitalClinic.Hospital.Name</strong>
+                        </td>
+                        <td>
+                            <strong>@__.GetKey(appointment.HospitalClinic.Clinic.Name)</strong>
+                        </td>
+                        <td>
+                            <strong>@appointment.DateAndTime</strong>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
