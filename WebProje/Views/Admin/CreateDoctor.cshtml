@@ -1,0 +1,72 @@
+@{
+    List<User> users = (List<User>)ViewData["users"];
+    bool created = TempData["created"] != null ? (bool)TempData["created"] : false;
+    bool error = TempData["error"] != null ? (bool)TempData["error"] : false;
+}
+@if (created)
+{
+    <div class="alert alert-success col-md-offset-3">
+        <strong>Success!</strong> Hospital created.
+    </div>
+}
+else if (error)
+{
+    <div class="alert alert-danger col-md-offset-3">
+        <strong>Failed!</strong> nothing was created.
+    </div>
+}
+<form method="post" asp-controller="Admin" asp-action="CreateDoctor" enctype="multipart/form-data" class="form-horizontal">
+    <div class="form-group mb-3">
+        <div class="col-md-9">
+            <label for="exampleDataList" class="form-label">User</label>
+            <input class="form-control" list="datalistOptions" name="userId" id="exampleDataList" placeholder="Type to search...">
+            <datalist id="datalistOptions">
+                @foreach (var user in users!)
+                {
+                    <option value="@(user.Id)">@(user.Name + " ~ " + user.Email)</option>
+                }
+            </datalist>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="hospitalsFilter">Please choose hospital</label>
+        <div class="col-md-9">
+            <select id="hospitalsFilter" name="hospitalId" class="form-control" size="1">
+
+            </select>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <label class="col-md-3 control-label" for="specialitiesFilter">Please choose speciality</label>
+        <div class="col-md-9">
+            <select id="specialitiesFilter" name="specialityId" class="form-control" size="1">
+
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="col-md-3 control-label" for="clinicsFilter">Please choose clinic</label>
+        <div class="col-md-9">
+            <select id="clinicsFilter" name="clinicId" class="form-control" size="1">
+
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="col-md-3 control-label" for="image">Please choose image</label>
+        <input type="file" name="image"/>
+    </div>
+
+
+    <div class="form-group mb-3 form-actions">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-primary" style="overflow: hidden; position: relative;"><span class="btn-ripple animate" style="height: 70px; width: 70px; top: -16.5938px; left: 11.875px;"></span>Submit</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/filters.js"></script>
+}

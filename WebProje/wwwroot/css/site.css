@@ -1,18 +1,49 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
+}
+
+.heroMainCard {
+    position: relative;
+    background-color: #252B61
+}
+
+.heroMainCardDoctorImgContainer {
+    position: absolute;
+    left: 55%;
+    top: 25%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+}
+
+.heroMainCardDoctorImg {
+    height: 100%;
+}
+
+.doctorsCard {
+    position: relative;
+    background-color: #F0DA69;
+    background-blend-mode: color-burn;
+}
+
+.doctorsCardImg {
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
