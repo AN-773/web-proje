@@ -1,0 +1,31 @@
+@model Doctor
+@{
+    bool created = TempData["created"] != null ? (bool)TempData["created"] : false;
+    bool error = TempData["error"] != null ? (bool)TempData["error"] : false;
+}
+@if (created)
+{
+    <div class="alert alert-success col-md-offset-3">
+        <strong>Success!</strong> Hospital created.
+    </div>
+}
+else if (error)
+{
+    <div class="alert alert-danger col-md-offset-3">
+        <strong>Failed!</strong> nothing was created.
+    </div>
+}
+<form method="post" asp-controller="Doctors" asp-action="UpdateSessionTime" class="form-horizontal">
+    <div class="form-group mb-3">
+        <label class="col-md-3 control-label" for="name">Name</label>
+        <div class="col-md-9">
+            <span class="help-block">Please enter single session estimated time</span>
+            <input type="number" id="time" name="sessionTime" class="form-control" value="@Model.SessionTime">
+        </div>
+    </div>
+    <div class="form-group form-actions">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-primary" style="overflow: hidden; position: relative;"><span class="btn-ripple animate" style="height: 70px; width: 70px; top: -16.5938px; left: 11.875px;"></span>Submit</button>
+        </div>
+    </div>
+</form>

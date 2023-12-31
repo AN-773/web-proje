@@ -1,0 +1,58 @@
+@{
+    bool created = TempData["created"] != null ? (bool)TempData["created"] : false;
+    bool error = TempData["error"] != null ? (bool)TempData["error"] : false;
+}
+@if (created)
+{
+    <div class="alert alert-success col-md-offset-3">
+        <strong>Success!</strong> Hospital created.
+    </div>
+}
+else if (error)
+{
+    <div class="alert alert-danger col-md-offset-3">
+        <strong>Failed!</strong> nothing was created.
+    </div>
+}
+<form method="post" asp-controller="Doctors" asp-action="CreateWorkingTime" class="form-horizontal">
+    <div class="form-group mb-3">
+        <div class="col-md-9">
+            <span class="help-block">Please choose days of week</span>
+            <select id="daysOfWeek" name="DaysOfWeek" size="4" multiple class="form-control">
+                <option value="Sat">Saturday</option>
+                <option value="Sun">Sunday</option>
+                <option value="Mon">Monday</option>
+                <option value="Tue">Tuesday</option>
+                <option value="Wed">Wednesday</option>
+                <option value="Thu">Thursday</option>
+                <option value="Fri">Friday</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group mb-3">
+        <label class="col-md-3 control-label">Please choose start time</label>
+        <div class="col-md-9">
+            <input type="number" name="StartTime"/>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="col-md-3 control-label" >Please choose end time</label>
+        <div class="col-md-9">
+            <input type="number" name="EndTime"/>
+        </div>
+    </div>
+
+
+    <div class="form-group mb-3 form-actions">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-primary" style="overflow: hidden; position: relative;"><span class="btn-ripple animate" style="height: 70px; width: 70px; top: -16.5938px; left: 11.875px;"></span>Submit</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/filters.js"></script>
+}

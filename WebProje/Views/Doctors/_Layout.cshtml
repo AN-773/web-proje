@@ -1,0 +1,96 @@
+@{
+    string pathLast = Context.Request.Path.ToString().Split('/').Last();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - WebProje</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/utils.css" asp-append-version="true"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row p-0 flex-nowrap overflow-hidden">
+        <div class="position-fixed fixed-top bg-dark w-25 min-vh-100 d-none d-md-block p-0">
+            <div class="bg-dark p-2">
+                <ul class="nav nav-pills flex-column" id="menu">
+                    <li class="nav-item text-white">
+                        <a asp-controller="Doctors" asp-action="Index" class="nav-link text-white fs-4 @(pathLast == "" ? "active" : "")">
+                            Session Time
+                        </a>
+                    </li>
+                    <li class="nav-item text-white">
+                        <a href="#workingtimes" class="nav-link text-white mb-2 @(pathLast.Contains("WorkingTime") ? "active" : "")" data-bs-toggle="collapse">
+                            <span class="ms-1 fs-4">Working Times</span>
+                        </a>
+                        <ul class="nav flex-column ms-2 @(pathLast.Contains("WorkingTime") ? "" : "collapse")" id="workingtimes" data-bs-target="#menu">
+                            <li class="nav-item">
+                                <a asp-controller="Doctors" asp-action="CreateWorkingTime" class="nav-link text-white @(pathLast == "CreateWorkingTime" ? "active" : "")">
+                                    Create
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Doctors" asp-action="ListWorkingTimes" class="nav-link text-white @(pathLast == "ListWorkingTimes" ? "active" : "")">
+                                    List
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item text-white fs-4">
+                        <a asp-controller="Doctors" asp-action="Appointments" class="nav-link text-white @(pathLast == "Appointments" ? "active" : "")">
+                            Appointments
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="position-fixed fixed-top bg-dark w-25 h-100 min-vh-100 d-sm-block d-md-none p-0">
+            <div class="bg-dark p-2">
+                <ul class="nav nav-pills flex-column" id="menu">
+                    <li class="nav-item text-white">
+                        <a asp-controller="Doctors" asp-action="Index" class="nav-link text-white fs-4 @(pathLast == "" ? "active" : "")">
+                            ST
+                        </a>
+                    </li>
+                    <li class="nav-item text-white">
+                        <a href="#workingtimes" class="nav-link text-white mb-2 @(pathLast.Contains("WorkingTime") ? "active" : "")" data-bs-toggle="collapse">
+                            <span class="ms-1 fs-4">WT</span>
+                        </a>
+                        <ul class="nav flex-column ms-2 @(pathLast.Contains("WorkingTime") ? "" : "collapse")" id="workingtimes" data-bs-target="#menu">
+                            <li class="nav-item">
+                                <a asp-controller="Doctors" asp-action="CreateWorkingTime" class="nav-link text-white @(pathLast == "CreateWorkingTime" ? "active" : "")">
+                                    +
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Doctors" asp-action="ListWorkingTimes" class="nav-link text-white @(pathLast == "ListWorkingTimes" ? "active" : "")">
+                                    #
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item text-white fs-4">
+                        <a asp-controller="Doctors" asp-action="Appointments" class="nav-link text-white @(pathLast == "Appointments" ? "active" : "")">
+                            Ap
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-6 col-md-auto flex-grow-1" style="margin-left: 25%">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-danger float-end text-white">Click here to Logout</button>
+            </form>
+            @RenderBody()
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
